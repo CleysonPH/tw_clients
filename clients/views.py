@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Client
 from .forms import ClientForm
@@ -23,3 +23,11 @@ def client_create(request):
             return redirect("clients:client-list")
     context = {"form": form}
     return render(request, "clients/client_form.html", context)
+
+
+def client_detail(request, pk):
+    client = get_object_or_404(Client, pk=pk)
+
+    context = {"client": client}
+
+    return render(request, "clients/client_detail.html", context)
