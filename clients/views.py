@@ -1,3 +1,11 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Client
+
+
+def client_list(request):
+    clients = Client.objects.all()
+
+    context = {"clients": clients}
+
+    return render(request, "clients/client_list.html", context)
