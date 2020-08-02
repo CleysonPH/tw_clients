@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TW Clients</title>
-</head>
-<body>
-  <table>
+{% extends 'base.html' %}
+
+{% block content %}
+  <table class="table">
     <thead>
       <tr>
         <th>Nome</td>
@@ -24,5 +19,6 @@
       {% endfor %}
     </tbody>
   </table>
-</body>
-</html>
+
+  <a href="{% url 'clients:client-create' %}" class="btn btn-primary">Cadastrar</a>
+{% endblock content %}
