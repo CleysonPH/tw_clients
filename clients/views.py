@@ -46,3 +46,14 @@ def client_update(request, pk):
             return redirect("clients:client-detail", pk=client.pk)
     context = {"form": form}
     return render(request, "clients/client_form.html", context)
+
+
+def client_delete(request, pk):
+    client = get_object_or_404(Client, pk=pk)
+
+    if request.method == "POST":
+        client.delete()
+
+        return redirect("clients:client-list")
+    context = {"client": client}
+    return render(request, "clients/client_confirm_delete.html", context)

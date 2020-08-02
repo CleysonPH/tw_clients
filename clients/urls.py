@@ -1,6 +1,12 @@
 from django.urls import path
 
-from .views import client_list, client_create, client_detail, client_update
+from .views import (
+    client_list,
+    client_create,
+    client_detail,
+    client_update,
+    client_delete,
+)
 
 
 app_name = "clients"
@@ -9,4 +15,5 @@ urlpatterns = [
     path("cadastrar", client_create, name="client-create"),
     path("<int:pk>/detalhes", client_detail, name="client-detail"),
     path("<int:pk>/editar", client_update, name="client-update"),
+    path("<int:pk>/deletar", client_delete, name="client-delete"),
 ]

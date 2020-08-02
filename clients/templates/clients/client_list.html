@@ -18,7 +18,7 @@
           <td>{{ client.gender }}</td>
           <td>
             <a href="{% url 'clients:client-update' pk=client.pk %}" class="btn btn-warning">Editar</a>
-            <a href="" class="btn btn-danger">Deletar</a>
+            <a href="{% url 'clients:client-delete' pk=client.pk %}" class="btn btn-danger">Deletar</a>
           </td>
         </tr>
       {% endfor %}
