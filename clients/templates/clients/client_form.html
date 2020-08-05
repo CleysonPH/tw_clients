@@ -5,36 +5,28 @@
 {% block content %}
   <form method="POST">
     {% csrf_token %}
-    <div class="form-group">
-      <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
-      {{ form.name|addclass:"form-control" }}
-      {{ form.name.errors }}
-    </div>
 
-    <div class="form-group">
-      <label for="{{ form.birth_date.id_for_label }}">{{ form.birth_date.label }}</label>
-      {{ form.birth_date|addclass:"form-control" }}
-      {{ form.birth_date.errors }}
-    </div>
+    <h4>Dados do cliente</h4>
+    {% for field in client_form %}
+      {% ifnotequal field.label "Endereço" %}
+        <div class="form-group">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field|addclass:"form-control" }}
+          {{ field.errors }}
+        </div>
+      {% endifnotequal %}
+    {% endfor %}
 
-    <div class="form-group">
-      <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
-      {{ form.email|addclass:"form-control" }}
-      {{ form.email.errors }}
-    </div>
+    <hr>
+    <h4>Endereço</h4>
+    {% for field in address_form %}
+      <div class="form-group">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field|addclass:"form-control" }}
+        {{ field.errors }}
+      </div>
+    {% endfor %}
 
-    <div class="form-group">
-      <label for="{{ form.occupation.id_for_label }}">{{ form.occupation.label }}</label>
-      {{ form.occupation|addclass:"form-control" }}
-      {{ form.occupation.errors }}
-    </div>
-
-    <div class="form-group">
-      <label for="{{ form.gender.id_for_label }}">{{ form.gender.label }}</label>
-      {{ form.gender|addclass:"form-control" }}
-      {{ form.gender.errors }}
-    </div>
-
-    <div><input type="submit" value="Salvar"></div>
+    <div><input type="submit" value="Salvar" class="btn btn-primary"></div>
   </form>
 {% endblock content %}

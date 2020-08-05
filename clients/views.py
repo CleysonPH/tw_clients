@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
 from .models import Client
-from .forms import ClientForm
+from .forms import ClientForm, AddressForm
 
 
 def client_list(request):
@@ -13,15 +13,16 @@ def client_list(request):
 
 
 def client_create(request):
-    form = ClientForm()
+    client_form = ClientForm()
+    address_form = AddressForm()
     if request.method == "POST":
-        form = ClientForm(request.POST)
+        client_form = ClientForm(request.POST)
 
-        if form.is_valid():
-            form.save()
+        if client_form.is_valid():
+            client_form.save()
 
             return redirect("clients:client-list")
-    context = {"form": form}
+    context = {"client_form": client_form, "address_form": address_form}
     return render(request, "clients/client_form.html", context)
 
 
