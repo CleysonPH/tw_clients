@@ -15,6 +15,9 @@ class Client(models.Model):
     gender = models.CharField(
         "Sexo", max_length=1, choices=GENDER_CHOICES, blank=False, null=False
     )
+    address = models.OneToOneField(
+        "clients.Address", verbose_name="Endereço", on_delete=models.SET_NULL, null=True
+    )
 
     class Meta:
         verbose_name = "Cliente"
