@@ -41,7 +41,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_APP = []
+THIRD_APP = ["django_adminlte"]
 
 MY_APPS = ["clients.apps.ClientsConfig"]
 
