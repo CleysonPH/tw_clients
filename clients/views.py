@@ -17,9 +17,13 @@ def client_create(request):
     address_form = AddressForm()
     if request.method == "POST":
         client_form = ClientForm(request.POST)
+        address_form = AddressForm(request.POST)
 
-        if client_form.is_valid():
-            client_form.save()
+        if client_form.is_valid() and address_form.is_valid():
+            address = address_form.save()
+            client = client_form.save(commit=False)
+            client.address = address
+            client.save()
 
             return redirect("clients:client-list")
     context = {"client_form": client_form, "address_form": address_form}
