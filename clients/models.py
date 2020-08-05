@@ -22,3 +22,21 @@ class Client(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Address(models.Model):
+    street = models.CharField("Rua", max_length=200, null=False, blank=False)
+    number = models.IntegerField("Número", null=False, blank=False)
+    complement = models.CharField(
+        "Complemento", max_length=200, null=False, blank=False
+    )
+    neighborhood = models.CharField("Bairro", max_length=50, null=False, blank=False)
+    city = models.CharField("Cidade", max_length=50, null=False, blank=False)
+    country = models.CharField("País", max_length=50, null=False, blank=False)
+
+    class Meta:
+        verbose_name = "Endereço"
+        verbose_name_plural = "Endereços"
+
+    def __str__(self):
+        return self.street
