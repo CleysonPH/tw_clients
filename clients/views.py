@@ -40,16 +40,22 @@ def client_detail(request, pk):
 
 def client_update(request, pk):
     client = get_object_or_404(Client, pk=pk)
-    form = ClientForm(instance=client)
+
+    client_form = ClientForm(instance=client)
+    address_form = AddressForm(instance=client.address)
 
     if request.method == "POST":
-        form = ClientForm(request.POST, instance=client)
+        client_form = ClientForm(request.POST, instance=client)
+        address_form = AddressForm(request.POST, instance=client.address)
 
-        if form.is_valid():
-            form.save()
+        if client_form.is_valid() and address_form.is_valid():
+            address = address_form.save()
+            client = client_form.save(commit=False)
+            client.address = address
+            client.save()
 
             return redirect("clients:client-detail", pk=client.pk)
-    context = {"form": form}
+    context = {"client_form": client_form, "address_form": address_form}
     return render(request, "clients/client_form.html", context)
 
 
