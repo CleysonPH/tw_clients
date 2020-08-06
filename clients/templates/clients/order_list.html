@@ -19,7 +19,7 @@
           <td>{{ order.value }}</td>
           <td>{{ order.status }}</td>
           <td>
-            <a href="#" class="btn btn-warning">Editar</a>
+            <a href="{% url 'clients:order-update' pk=order.pk %}" class="btn btn-warning">Editar</a>
             <a href="#" class="btn btn-danger">Deletar</a>
           </td>
         </tr>
