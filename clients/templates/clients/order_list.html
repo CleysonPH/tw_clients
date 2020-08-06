@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Cliente</td>
+        <th>Data</td>
+        <th>Status</td>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for order in orders %}
+        <tr>
+          <td><a href="#">{{ order.client }}</a></td>
+          <td>{{ order.date }}</td>
+          <td>{{ order.status }}</td>
+          <td>
+            <a href="#" class="btn btn-warning">Editar</a>
+            <a href="#" class="btn btn-danger">Deletar</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a href="{% url 'clients:order-create' %}" class="btn btn-primary">Cadastrar</a>
+{% endblock content %}
