@@ -24,7 +24,7 @@
   </li>
 
   <li class="treeview">
-    <a href="#"><i class="fa fa-pencil"></i> <span>Pedidos</span>
+    <a href="#"><i class="fa fa-shopping-cart"></i> <span>Pedidos</span>
       <span class="pull-right-container">
         <i class="fa fa-angle-left pull-right"></i>
       </span>
@@ -38,6 +38,27 @@
       </li>
       <li>
         <a href="{% url 'clients:order-create' %}">
+          <i class="fa fa-plus"></i> <span>Cadastro</span>
+        </a>
+      </li>
+    </ul>
+  </li>
+
+  <li class="treeview">
+    <a href="#"><i class="fa fa-coffee"></i> <span>Produtos</span>
+      <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+
+    <ul class="treeview-menu">
+      <li>
+        <a href="#">
+          <i class="fa fa-list"></i> <span>Listagem</span>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'clients:product-create' %}">
           <i class="fa fa-plus"></i> <span>Cadastro</span>
         </a>
       </li>

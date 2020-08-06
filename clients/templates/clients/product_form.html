@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load filters %}
+
+{% block content %}
+  <section class="box box-default">
+    <div class="box-header with-border">
+      <h1 class="box-title">{{ title }}</h1>
+    </div>
+
+    <div class="box-body">
+      <form method="POST">
+        {% csrf_token %}
+        {% for field in product_form %}
+          <div class="form-group">
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field|addclass:"form-control" }}
+            {{ field.errors }}
+          </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </form>
+    </div>
+  </section>
+{% endblock content %}
