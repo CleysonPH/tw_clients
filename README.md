@@ -7,6 +7,7 @@ Projeto feito durante o curso [Django Fundamentos](https://www.treinaweb.com.br/
 - Django
 - python-decouple
 - dj-database-url
+- django-adminlte2
 
 ## Requisitos
 
