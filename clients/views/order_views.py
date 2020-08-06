@@ -43,3 +43,11 @@ def order_update(request, pk):
     context = {"order_form": order_form}
 
     return render(request, "clients/order_form.html", context)
+
+
+def order_detail(request, pk):
+    order = get_object_or_404(Order, pk=pk)
+
+    context = {"order": order}
+
+    return render(request, "clients/order_detail.html", context)
