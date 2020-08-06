@@ -66,9 +66,9 @@ class Order(models.Model):
     date = models.DateTimeField("Data", auto_now_add=True)
     value = models.FloatField("Valor", null=False, blank=False)
     status = models.CharField(
-        "Status", max_length=1, choices=STATUS_CHOICE, null=True, blank=True
+        "Status", max_length=1, choices=STATUS_CHOICE, null=False, blank=False
     )
-    comments = models.TextField("Observações")
+    comments = models.TextField("Observações", blank=True, null=True)
 
     class Meta:
         verbose_name = "Pedido"
