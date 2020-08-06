@@ -58,7 +58,7 @@ class Order(models.Model):
 
     client = models.ForeignKey(
         "clients.Client",
-        verbose_name="Pedido",
+        verbose_name="Cliente",
         on_delete=models.CASCADE,
         null=False,
         blank=False,
