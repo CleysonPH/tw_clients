@@ -47,3 +47,32 @@ class Address(models.Model):
 
     def __str__(self):
         return self.street
+
+
+class Order(models.Model):
+    STATUS_CHOICE = (
+        ("P", "Pedido Realizado"),
+        ("F", "Fazendo"),
+        ("E", "Saiu para entrega"),
+    )
+
+    client = models.ForeignKey(
+        "clients.Client",
+        verbose_name="Pedido",
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
+    )
+    date = models.DateTimeField("Data", auto_now_add=True)
+    value = models.FloatField("Valor", null=False, blank=False)
+    status = models.CharField(
+        "Status", max_length=1, choices=STATUS_CHOICE, null=False, blank=False
+    )
+    comments = models.TextField("Observações")
+
+    class Meta:
+        verbose_name = "Pedido"
+        verbose_name_plural = "Pedidos"
+
+    def __str__(self):
+        return self.client.name
