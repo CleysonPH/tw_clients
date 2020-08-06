@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .models import Client
-from .forms import ClientForm, AddressForm
+from clients.models import Client
+from clients.forms import ClientForm, AddressForm
 
 
 def client_list(request):
