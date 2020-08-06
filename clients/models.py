@@ -66,7 +66,7 @@ class Order(models.Model):
     date = models.DateTimeField("Data", auto_now_add=True)
     value = models.FloatField("Valor", null=False, blank=False)
     status = models.CharField(
-        "Status", max_length=1, choices=STATUS_CHOICE, null=False, blank=False
+        "Status", max_length=1, choices=STATUS_CHOICE, null=True, blank=True
     )
     comments = models.TextField("Observações")
 
