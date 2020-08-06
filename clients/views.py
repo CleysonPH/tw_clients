@@ -63,6 +63,7 @@ def client_delete(request, pk):
     client = get_object_or_404(Client, pk=pk)
 
     if request.method == "POST":
+        client.address.delete()
         client.delete()
 
         return redirect("clients:client-list")
