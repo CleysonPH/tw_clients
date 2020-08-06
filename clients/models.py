@@ -69,6 +69,7 @@ class Order(models.Model):
         "Status", max_length=1, choices=STATUS_CHOICE, null=False, blank=False
     )
     comments = models.TextField("Observações", blank=True, null=True)
+    products = models.ManyToManyField("clients.Product", verbose_name="Produtos")
 
     class Meta:
         verbose_name = "Pedido"
@@ -76,3 +77,16 @@ class Order(models.Model):
 
     def __str__(self):
         return self.client.name
+
+
+class Product(models.Model):
+    name = models.CharField("Nome", max_length=50, null=False, blank=False)
+    description = models.TextField("Descrição")
+    value = models.FloatField("Valor", null=False, blank=False)
+
+    class Meta:
+        verbose_name = "Produto"
+        verbose_name_plural = "Produtos"
+
+    def __str__(self):
+        return self.name
