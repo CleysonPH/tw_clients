@@ -21,7 +21,7 @@ def order_create(request):
 
 
 def order_list(request):
-    orders = Order.objects.all()
+    orders = Order.objects.select_related("client").all()
 
     context = {"orders": orders}
 
