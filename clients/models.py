@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import m2m_changed
 
 
 class Client(models.Model):
@@ -77,6 +78,20 @@ class Order(models.Model):
 
     def __str__(self):
         return self.client.name
+
+
+def pre_save_order_receiver(sender, instance, action, **kwargs):
+    if action == "post_add" or action == "post_remove" or action == "post_clear":
+        products = instance.products.all()
+        order_total_price = 0
+
+        for product in products:
+            order_total_price += product.value
+        instance.value = order_total_price
+        instance.save()
+
+
+m2m_changed.connect(pre_save_order_receiver, sender=Order.products.through)
 
 
 class Product(models.Model):
