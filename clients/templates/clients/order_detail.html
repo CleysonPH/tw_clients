@@ -12,6 +12,14 @@
       <p><strong>Valor:</strong> R${{ order.value }}</p>
       <p><strong>Status:</strong> {{ order.status }}</p>
       <p><strong>Descrição:</strong> {{ order.comments }}</p>
+
+      <hr>
+      <h4>Lista de Produtos</h4>
+      <ul>
+        {% for product in order.products.all %}
+          <li>{{ product }}</li>
+        {% endfor %}
+      </ul>
     </div>
 
   </section>

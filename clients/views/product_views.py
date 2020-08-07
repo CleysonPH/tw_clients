@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from clients.forms import ProductForm
 from clients.models import Product
@@ -12,6 +12,8 @@ def product_create(request):
 
         if product_form.is_valid():
             product_form.save()
+
+            return redirect("clients:product-list")
 
     context = {"title": "Cadastrar Produto", "product_form": product_form}
 
