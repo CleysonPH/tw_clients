@@ -11,6 +11,7 @@ from .views import (
     order_update,
     order_detail,
     product_create,
+    product_list,
 )
 
 
@@ -26,4 +27,5 @@ urlpatterns = [
     path("pedido/<int:pk>/editar", order_update, name="order-update"),
     path("pedido/<int:pk>/detalhes", order_detail, name="order-detail"),
     path("produto/cadastrar", product_create, name="product-create"),
+    path("produto/listar", product_list, name="product-list"),
 ]

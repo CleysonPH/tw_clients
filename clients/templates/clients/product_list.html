@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</td>
+        <th>Valor</td>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+        <tr>
+          <td><a href="#">{{ product.name }}</a></td>
+          <td>{{ product.value }}</td>
+          <td>
+            <a href="#" class="btn btn-warning">Editar</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a href="{% url 'clients:product-create' %}" class="btn btn-primary">Cadastrar</a>
+{% endblock content %}
